@@ -1,0 +1,24 @@
+{% extends 'MyApp/base.html' %}
+{% block content %}
+    <br>
+    <div class="container-fluid">
+        <div class="col-md-8">
+            {% for leave in leaves %}
+                <div class="jumbotron">
+                    <p>Applicant: {{ leave.applicant }}</p>
+                    <p>From {{ leave.start_date }}, {{ leave.start_time }} to {{ leave.end_date }}, {{ leave.end_time }}</p>
+                    {% if leave.comment %}
+                        <p>Mentor Comment: {{ leave.comment }}</p>
+                    {% endif %}
+                    {% if request.user.is_mentor %}
+                        <div>
+                            <a class="btn btn-primary btn-sm mt-1 mb-1"
+                               href="{% url 'leave_update' leave.id %}">Authorize?</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+{% endblock content %}

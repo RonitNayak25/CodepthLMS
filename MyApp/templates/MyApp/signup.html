@@ -1,0 +1,10 @@
+{% extends 'MyApp/base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <ul class="list-group">
+        <li><a class="list-group-item" href="{% url 'student-register' %}">Register as a Student</a></li>
+        <li><a class="list-group-item" href="{% url 'mentor-register' %}">Register as a Mentor</a></li>
+        <li><a class="list-group-item" href="{% url 'warden-register' %}">Register as a Warden</a></li>
+    </ul>
+{% endblock content %}
